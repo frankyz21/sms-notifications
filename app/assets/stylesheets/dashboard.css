@@ -1,0 +1,21 @@
+.sms-notifications {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.sms-notifications th, .sms-notifications td {
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+.sms-notifications th {
+  background-color: #f2f2f2;
+}
+
+.sms-notifications tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.sms-notifications tr:hover {
+  background-color: #ddd;
+}
