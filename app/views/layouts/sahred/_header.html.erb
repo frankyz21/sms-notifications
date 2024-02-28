@@ -1,0 +1,5 @@
+<% if user_signed_in? %>
+  <%= form_tag destroy_user_session_path, method: :delete do %>
+    <%= submit_tag "Sign out", class: "btn btn-danger" %>
+  <% end %>
+<% end %>
