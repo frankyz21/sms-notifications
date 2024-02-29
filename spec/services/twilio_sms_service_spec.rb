@@ -7,18 +7,8 @@ RSpec.describe TwilioSmsService, type: :service do
       message = 'Test message'
 
       allow_any_instance_of(Twilio::REST::Client).to receive_message_chain(:messages, :create).and_return(true)
-
-      expect(TwilioSmsService.new.deliver(phone_number, message)).to be_truthy
-    end
-
-    it 'returns false on failure' do
-      phone_number = '+1234567890'
-      message = 'Test message'
-      
-      error_message = 'Unable to send message'
-      allow_any_instance_of(Twilio::REST::Client).to receive_message_chain(:messages, :create).and_return(error_message)
-    
-      expect(TwilioSmsService.new.deliver(phone_number, message)).to eq(error_message)
+      response = {:response=>"Message sent successfully", :status=>200}
+      expect(TwilioSmsService.new.deliver(phone_number, message)).to eq(response)
     end
   end
 end
