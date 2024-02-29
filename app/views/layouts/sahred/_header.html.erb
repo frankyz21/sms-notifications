@@ -1,7 +1,14 @@
 <% if user_signed_in? %>
-  <%= form_tag destroy_user_session_path, method: :delete do %>
-    <%= submit_tag "Sign out", class: "btn btn-danger" %>
-  <% end %>
-  <br/>
-  <%= link_to 'Send message', invitations_new_path %>
+  <div class="user-nav">
+    <div class="user-info">
+      <strong>Welcome <%= current_user.name %></strong>
+    </div>
+    <div class="actions">
+      <%= link_to 'Home', root_path, class: "btn btn-primary"%>
+      <%= link_to 'Send message', invitations_new_path, class: "btn btn-primary"%>
+      <%= form_tag destroy_user_session_path, method: :delete do %>
+        <%= submit_tag "Sign out", class: "btn btn-danger" %>
+      <% end %>
+    </div>
+  </div>
 <% end %>

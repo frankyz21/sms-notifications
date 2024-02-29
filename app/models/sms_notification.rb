@@ -5,6 +5,7 @@ class SmsNotification < ApplicationRecord
 
   def send_sms
     response = TwilioService.new.send_sms(self.recipient_phone_number, self.message)
-    self.update(status: response.status, error_message: response.error_code)
+    response.include?("error") ? error = response : error = response.error_code
+    self.update(status: error.nil? ? "sent" : "failed", error_message: error)
   end
 end

@@ -13,6 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
+    @user.update!(name: "User_#{@user.id}")
   end
 
   # GET /resource/edit
@@ -64,6 +65,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def send_sign_up_notification
-    SmsNotification.create!(recipient_phone_number: current_user.phone_number, message: "Welcome to our application! Thanks for signing up.")
+    SmsNotification.create!(recipient_phone_number: current_user.phone_number, message: "Welcome to our application! Thanks for signing up.", status: "queued")
   end
 end
