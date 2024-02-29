@@ -9,7 +9,8 @@ class InvitationsController < ApplicationController
     # Store SMS notification details
     SmsNotification.create!(
       recipient_phone_number: phone_number,
-      message: message
+      message: message,
+      user_id: current_user.id
     )
 
     redirect_to root_path, notice: 'Invitation sent successfully!'

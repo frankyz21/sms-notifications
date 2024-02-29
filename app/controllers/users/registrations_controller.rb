@@ -65,6 +65,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def send_sign_up_notification
-    SmsNotification.create!(recipient_phone_number: current_user.phone_number, message: "Welcome to our application! Thanks for signing up.", status: "queued")
+    current_user.sms_notifications.create!(recipient_phone_number: current_user.phone_number, message: "Welcome to our application! Thanks for signing up.", status: "queued")
   end
 end

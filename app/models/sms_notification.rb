@@ -4,8 +4,7 @@ class SmsNotification < ApplicationRecord
   private
 
   def send_sms
-    response = TwilioService.new.send_sms(self.recipient_phone_number, self.message)
-    response.class.eql?(String) && response.include?("error") ? error = response.split(" ").join(" ").scan(/\[.*$/)[0] : error = response.error_code
-    self.update(status: error.nil? ? "sent" : "failed", error_message: error)
+    response = TwilioSmsService.new.deliver(self.recipient_phone_number, self.message)
+    self.update(status: response[:status].eql?(200) ? "sent" : "failed", error_message: "code: #{response[:status]}, message: #{response[:response]}")
   end
 end
