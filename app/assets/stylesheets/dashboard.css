@@ -19,3 +19,30 @@
 .sms-notifications tr:hover {
   background-color: #ddd;
 }
+
+.search-form {
+  align-items: center;
+}
+
+.search-form .form-group {
+  margin-bottom: 0; /* Remove margin bottom */
+}
+.search-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-form{
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-bottom: 1px solid #2196F3;
+  outline: none;
+}

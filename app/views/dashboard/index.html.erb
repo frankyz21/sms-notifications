@@ -1,4 +1,13 @@
-<h1>SMS Notification History</h1>
+<div class="search-container">
+  <h1>SMS Notification History</h1>
+
+  <div class="search-form">
+    <%= form_tag(dashboard_index_path, method: :get, class: "search-container") do %>
+      <%= text_field_tag :query, params[:query], placeholder: "Search by recipient phone number or status", class: "search-input" %>
+      <%= submit_tag "Search", class: "btn btn-primary mb-2" %>
+    <% end %>
+  </div>
+</div>
 
 <table class="sms-notifications">
   <thead>

@@ -1,5 +1,9 @@
 class SmsNotification < ApplicationRecord
+  include PgSearch::Model
+
   after_create :send_sms
+
+  pg_search_scope :search_by_content_and_status, against: [:recipient_phone_number, :status], using: { tsearch: { prefix: true } }
 
   private
 
